@@ -10,12 +10,18 @@ Screenshots:
 
 
 How to build:
+
 Go to "front end React" folder in Terminal
+
 Run "npm i"
+
 Run "npm start" to start ReactJS
 
 Go to "server side Go" folder in Terminal
+
 Run "go build"
+
 Run "./server_side_Go" to start Go server
+
 
 Visit localhost:3030 to play the web pages
