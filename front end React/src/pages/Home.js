@@ -8,8 +8,7 @@ import moment from 'moment';
 
 var Buffer = require('buffer/').Buffer
 function Home() {
-  // name, date of birth, phone number, email
-  // address, photo (driver license) and appointment time 
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
@@ -17,17 +16,7 @@ function Home() {
   const [address, setAddress] = useState("");
   const [birthday, setBirthday] = useState(new Date());
   const [appointmentDate, setAppointmentDate] = useState(new Date());
-  const [photo, setPhoto] = useState();
-  const [photoURL, setPhotoURL] = useState();
   const [photoBase64, setPhotoBase64] = useState();
-
-  // useEffect(() => {
-  //   if (photo == undefined || photo == "") return;
-  //   // let image = await axios.get(photoURL, {responseType: 'arraybuffer'});
-  //   // let raw = Buffer.from(image.data).toString('base64');
-  //   // console.log(raw);
-  //   // setPhotoBase64(raw);
-  // }, [photo]);
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,14 +46,11 @@ function Home() {
   };
 
   function onPhotoImageChange(e) {
-    console.log(e.target.files);
-    setPhoto(e.target.files[0]);
 
-    let photoURL1 = URL.createObjectURL(e.target.files[0]);
-    console.log(photoURL1);
-    Axios.get(photoURL1, {responseType: 'arraybuffer'}).then(res =>{
+    let photoURL = URL.createObjectURL(e.target.files[0]);
+    // convert photo image file to base64 string
+    Axios.get(photoURL, {responseType: 'arraybuffer'}).then(res =>{
       let rawBase64 = Buffer.from(res.data).toString("base64");
-      console.log(rawBase64);
       setPhotoBase64(rawBase64);
     });
   }
@@ -106,7 +92,6 @@ function Home() {
         />
         <input type="file" accept="image/*" onChange={onPhotoImageChange} />
         <button type="submit">Create</button>
-
         <div className="message">{message ? <p>{message}</p> : null}</div>
       </form>
     </div>

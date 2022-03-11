@@ -70,7 +70,6 @@ func getOneEvent(w http.ResponseWriter, r *http.Request) {
 }
 
 func getAllEvents(w http.ResponseWriter, r *http.Request) {
-	//w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET,POST,OPTIONS,DELETE,PUT")
 

@@ -6,10 +6,11 @@ function PatientList() {
   const [patientList, setPatientList] = useState([]);
 
   const GET_URL = "http://localhost:8080/patients";
+  // load the patient data after the page is rendered
   useEffect(() => {
-    fetchProducts();
+    fetchPatients();
   }, []);
-  const fetchProducts = () => {
+  const fetchPatients = () => {
   axios
     .get(GET_URL)
     .then((res) => {
